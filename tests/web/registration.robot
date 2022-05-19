@@ -5,14 +5,14 @@ Test Setup              Abrir o navegador no Ze Delivery e aceitar os cookies
 Test Teardown           Fechar o navegador
 
 *** Test Case ***
-Cadastro feito com sucesso
+Cenário 01: Cadastro feito com sucesso
         Dado que esteja na página de cadastro
         Quando preencher o formulário com dados validos
         E aceitar os termos e condições
         E clicar em criar conta
         Então deve ser redirecionado para pagina de validar o celular
 
-Celular já registrado
+Cenário 02: Celular já registrado
         Dado que esteja na página de cadastro
         Quando preencher o formulário com dados validos
         E preencher o campo "Celular" com "11983168056"
@@ -20,7 +20,7 @@ Celular já registrado
         E clicar em criar conta
         Então a pagina deve exibir "Esse celular já está registrado"
 
-Email já registrado
+Cenário 03: Email já registrado
         Dado que esteja na página de cadastro
         Quando preencher o formulário com dados validos
         E preencher o campo "E-mail" com "samuel.andradetp@live.com"
