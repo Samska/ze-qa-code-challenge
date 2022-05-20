@@ -1,5 +1,5 @@
 *** Settings ***
-Resource                ../api_resource.robot
+Resource                ../resources/api_resource.robot
 
 *** Keywords ***
 #### DADO

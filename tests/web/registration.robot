@@ -1,5 +1,5 @@
 *** Settings ***
-Resource                ../../web_resource.robot
+Resource                ../../resources/web_resource.robot
 Resource                ../../actions/registration.robot
 Test Setup              Abrir o navegador no Ze Delivery e aceitar os cookies
 Test Teardown           Fechar o navegador

@@ -1,5 +1,5 @@
 *** Settings ***
-Resource                ../../api_resource.robot
+Resource                ../../resources/api_resource.robot
 Resource                ../../actions/weather_data.robot
 
 *** Test Case ***
