@@ -46,6 +46,8 @@ robot -d ./logs tests/web\
 
 Nesta etapa, escolhi criar uma suite de testes de API usando Robot Framework + RequestLibrary.
 
+### Configuração
+
 Se você já tiver configurado os testes de UI, nessa etapa só vai precisar configurar o RequestLibrary (caso contrário precisará executar os comandos da etapa anterior):
 
 Instalar o RequestLibrary com o pip:
