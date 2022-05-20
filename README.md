@@ -1,6 +1,6 @@
-# Desafio de QA
+# QA Code Challenge
 
-# Fluxos críticos escolhidos
+## Fluxos críticos escolhidos
 
 i. Cadastro:
 
@@ -14,32 +14,46 @@ iii. Finalizar compra:
 
 Este com certeza seria o fluxo mais crítico, mesmo que o usuário possua cadastro, tenha selecionado os produtos e adicionado a sacola, se o fluxo de finalizar compra não estiver funcionando corretamente, a compra não vai ser concluída.
 
-# Teste de Automação UI
+## Teste de Automação UI
 
 Nesta etapa, escolhi criar uma suite de testes web do cenário de cadastro, usando Robot Framework + SeleniumLibrary.
 
-Para configurar e executar o projeto localmente você vai precisar do Python instalado e configurado no PATH (caso sua máquina seja windows). Você também vai precisar de um webdriver no path da sua máquina, o webdriver utilizado neste projeto está na pasta webdriver, caso sua máquina seja windows, basta copiar e colar esse arquivo em C:\Windows (ou qual diretório estiver sua pasta Windows). Os outros passos estão a seguir:
+### Configuração
+
+Para configurar e executar o projeto localmente você vai precisar do [Python](https://www.python.org/) instalado e configurado no PATH (caso sua máquina seja windows). Você também vai precisar de um webdriver no path da sua máquina, o webdriver utilizado neste projeto está na pasta webdriver, caso sua máquina seja windows, basta copiar e colar esse arquivo em C:\Windows (ou qual diretório estiver sua pasta Windows). Os outros passos estão a seguir:
 
 Instalar o Robot Framework com o pip:
+```sh
 pip install robotframework
+```
 
 Instalar o SeleniumLibrary com o pip:
+```sh
 pip install robotframework-seleniumlibrary
+```
 
 Instalar o FakerLibrary para gerar dados de forma dinâmica:
+```sh
 pip install robotframework-faker
+```
 
 Executar os testes web através da raiz do projeto e gerar os logs:
+```sh
 robot -d ./logs tests/web\
+```
 
-# Teste de Automação API
+## Teste de Automação API
 
 Nesta etapa, escolhi criar uma suite de testes de API usando Robot Framework + RequestLibrary.
 
 Se você já tiver configurado os testes de UI, nessa etapa só vai precisar configurar o RequestLibrary (caso contrário precisará executar os comandos da etapa anterior):
 
 Instalar o RequestLibrary com o pip:
+```sh
 pip install robotframework-requests
+```
 
 Executar os testes de api através da raiz do projeto e gerar os logs:
+```sh
 robot -d ./logs tests/api\
+```
