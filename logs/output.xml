@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.0 on win32)" generated="20220519 22:15:41.932" rpa="false" schemaversion="2">
+<suite id="s1" name="Api" source="C:\Users\Samuel\Desktop\ze-qa-code-challenge\tests\api">
+<suite id="s1-s1" name="Weather Data" source="C:\Users\Samuel\Desktop\ze-qa-code-challenge\tests\api\weather_data.robot">
+<test id="s1-s1-t1" name="Cenário 01: Consulta de clima por cidade">
+<kw name="Dado que esteja conectado no webservice Open Weather" library="weather_data">
+<kw name="Conecta ao WebService" library="api_resource">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>OpenWeather</arg>
+<arg>${HOST}</arg>
+<arg>disable_warnings=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220519 22:15:42.068" level="INFO">Creating Session using : alias=OpenWeather, url=https://api.openweathermap.org/data/2.5/weather, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220519 22:15:42.068" endtime="20220519 22:15:42.068"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:42.067" endtime="20220519 22:15:42.068"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:42.067" endtime="20220519 22:15:42.068"/>
+</kw>
+<kw name="Quando realizar a consulta com a cidade &quot;São Paulo&quot;" library="weather_data" sourcename="Quando realizar a consulta com a cidade &quot;${CIDADE_CONSULTADA}&quot;">
+<kw name="Realiza requisição por cidade" library="api_resource">
+<arg>${CIDADE_CONSULTADA}</arg>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>OpenWeather</arg>
+<arg>/?q=${CIDADE_CONSULTADA}&amp;appid=${APP_KEY}&amp;${LANG}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220519 22:15:42.069" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220519 22:15:43.002" level="INFO">GET Request : url=https://api.openweathermap.org/data/2.5/weather/?q=S%C3%A3o%20Paulo&amp;appid=0309b15c3c7fd25bc276675da66e9c05&amp;pt_br 
+ path_url=/data/2.5/weather/?q=S%C3%A3o%20Paulo&amp;appid=0309b15c3c7fd25bc276675da66e9c05&amp;pt_br 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220519 22:15:43.003" level="INFO">GET Response : url=https://api.openweathermap.org/data/2.5/weather/?q=S%C3%A3o%20Paulo&amp;appid=0309b15c3c7fd25bc276675da66e9c05&amp;pt_br 
+ status=200, reason=OK 
+ headers={'Server': 'openresty', 'Date': 'Fri, 20 May 2022 01:15:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '481', 'Connection': 'keep-alive', 'X-Cache-Key': '/data/2.5/weather/?pt_br=&amp;q=s%c3%a3o%20paulo', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'GET, POST'} 
+ body={"coord":{"lon":-46.6361,"lat":-23.5475},"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02n"}],"base":"stations","main":{"temp":284.43,"feels_like":283.65,"temp_min":281.09,"temp_max":284.51,"pressure":1022,"humidity":78},"visibility":10000,"wind":{"speed":1.54,"deg":290},"clouds":{"all":20},"dt":1653009143,"sys":{"type":2,"id":2033898,"country":"BR","sunrise":1652952920,"sunset":1652992258},"timezone":-10800,"id":3448439,"name":"São Paulo","cod":200} 
+ </msg>
+<msg timestamp="20220519 22:15:43.003" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220519 22:15:42.069" endtime="20220519 22:15:43.003"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Resposta: ${RESPOSTA.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220519 22:15:43.004" level="INFO">Resposta: {"coord":{"lon":-46.6361,"lat":-23.5475},"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02n"}],"base":"stations","main":{"temp":284.43,"feels_like":283.65,"temp_min":281.09,"temp_max":284.51,"pressure":1022,"humidity":78},"visibility":10000,"wind":{"speed":1.54,"deg":290},"clouds":{"all":20},"dt":1653009143,"sys":{"type":2,"id":2033898,"country":"BR","sunrise":1652952920,"sunset":1652992258},"timezone":-10800,"id":3448439,"name":"São Paulo","cod":200}</msg>
+<status status="PASS" starttime="20220519 22:15:43.003" endtime="20220519 22:15:43.004"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220519 22:15:43.004" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220519 22:15:43.004" endtime="20220519 22:15:43.004"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:42.069" endtime="20220519 22:15:43.004"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:42.069" endtime="20220519 22:15:43.004"/>
+</kw>
+<kw name="Então a condição metereológica deve ser retornada" library="weather_data">
+<kw name="Confere o clima" library="api_resource">
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${RESPOSTA.json()}</arg>
+<arg>weather</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20220519 22:15:43.006" endtime="20220519 22:15:43.006"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.005" endtime="20220519 22:15:43.006"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.005" endtime="20220519 22:15:43.006"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:42.066" endtime="20220519 22:15:43.007"/>
+</test>
+<test id="s1-s1-t2" name="Cenário 02: Consulta de clima por cidade inexistente">
+<kw name="Dado que esteja conectado no webservice Open Weather" library="weather_data">
+<kw name="Conecta ao WebService" library="api_resource">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>OpenWeather</arg>
+<arg>${HOST}</arg>
+<arg>disable_warnings=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220519 22:15:43.009" level="INFO">Creating Session using : alias=OpenWeather, url=https://api.openweathermap.org/data/2.5/weather, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220519 22:15:43.009" endtime="20220519 22:15:43.010"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.009" endtime="20220519 22:15:43.010"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.008" endtime="20220519 22:15:43.010"/>
+</kw>
+<kw name="Quando realizar a consulta com a cidade &quot;teste&quot;" library="weather_data" sourcename="Quando realizar a consulta com a cidade &quot;${CIDADE_CONSULTADA}&quot;">
+<kw name="Realiza requisição por cidade" library="api_resource">
+<arg>${CIDADE_CONSULTADA}</arg>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>OpenWeather</arg>
+<arg>/?q=${CIDADE_CONSULTADA}&amp;appid=${APP_KEY}&amp;${LANG}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220519 22:15:43.011" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220519 22:15:43.956" level="INFO">GET Request : url=https://api.openweathermap.org/data/2.5/weather/?q=teste&amp;appid=0309b15c3c7fd25bc276675da66e9c05&amp;pt_br 
+ path_url=/data/2.5/weather/?q=teste&amp;appid=0309b15c3c7fd25bc276675da66e9c05&amp;pt_br 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220519 22:15:43.957" level="INFO">GET Response : url=https://api.openweathermap.org/data/2.5/weather/?q=teste&amp;appid=0309b15c3c7fd25bc276675da66e9c05&amp;pt_br 
+ status=404, reason=Not Found 
+ headers={'Server': 'openresty', 'Date': 'Fri, 20 May 2022 01:15:43 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '40', 'Connection': 'keep-alive', 'X-Cache-Key': '/data/2.5/weather/?pt_br=&amp;q=teste', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'GET, POST'} 
+ body={"cod":"404","message":"city not found"} 
+ </msg>
+<msg timestamp="20220519 22:15:43.957" level="INFO">${RESPOSTA} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220519 22:15:43.011" endtime="20220519 22:15:43.957"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Resposta: ${RESPOSTA.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220519 22:15:43.957" level="INFO">Resposta: {"cod":"404","message":"city not found"}</msg>
+<status status="PASS" starttime="20220519 22:15:43.957" endtime="20220519 22:15:43.957"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220519 22:15:43.958" level="INFO">${RESPOSTA} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220519 22:15:43.957" endtime="20220519 22:15:43.958"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.010" endtime="20220519 22:15:43.958"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.010" endtime="20220519 22:15:43.958"/>
+</kw>
+<kw name="Então a mensagem &quot;city not found&quot; deve ser retornada" library="weather_data" sourcename="Então a mensagem &quot;${MENSAGEM}&quot; deve ser retornada">
+<kw name="Confere a mensagem" library="api_resource">
+<arg>${MENSAGEM}</arg>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPOSTA.json()}</arg>
+<arg>message</arg>
+<arg>${MENSAGEM}</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20220519 22:15:43.959" endtime="20220519 22:15:43.960"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.959" endtime="20220519 22:15:43.960"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.959" endtime="20220519 22:15:43.960"/>
+</kw>
+<kw name="E o status code deve ser &quot;404&quot;" library="weather_data" sourcename="E o status code deve ser &quot;${STATUS_CODE}&quot;">
+<kw name="Confere o status code" library="api_resource">
+<arg>${STATUS_CODE}</arg>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${RESPOSTA.status_code}</arg>
+<arg>${STATUS_ESPERADO}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220519 22:15:43.961" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20220519 22:15:43.961" endtime="20220519 22:15:43.961"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Status Code Retornado: ${RESPOSTA.status_code} -- Status Code Esperado: ${STATUS_ESPERADO}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220519 22:15:43.962" level="INFO">Status Code Retornado: 404 -- Status Code Esperado: 404</msg>
+<status status="PASS" starttime="20220519 22:15:43.962" endtime="20220519 22:15:43.962"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.960" endtime="20220519 22:15:43.962"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.960" endtime="20220519 22:15:43.962"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.008" endtime="20220519 22:15:43.963"/>
+</test>
+<test id="s1-s1-t3" name="Cenário 02: Consulta de clima com API key invalida">
+<kw name="Dado que esteja conectado no webservice Open Weather" library="weather_data">
+<kw name="Conecta ao WebService" library="api_resource">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>OpenWeather</arg>
+<arg>${HOST}</arg>
+<arg>disable_warnings=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220519 22:15:43.965" level="INFO">Creating Session using : alias=OpenWeather, url=https://api.openweathermap.org/data/2.5/weather, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220519 22:15:43.965" endtime="20220519 22:15:43.966"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.965" endtime="20220519 22:15:43.966"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.964" endtime="20220519 22:15:43.966"/>
+</kw>
+<kw name="Quando realizar a consulta com uma API key invalida" library="weather_data">
+<kw name="Realiza requisição com API key invalida" library="api_resource">
+<kw name="Get Request" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>OpenWeather</arg>
+<arg>/?appid=invalidApiKey</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220519 22:15:43.967" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220519 22:15:44.894" level="INFO">GET Request : url=https://api.openweathermap.org/data/2.5/weather/?appid=invalidApiKey 
+ path_url=/data/2.5/weather/?appid=invalidApiKey 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220519 22:15:44.894" level="INFO">GET Response : url=https://api.openweathermap.org/data/2.5/weather/?appid=invalidApiKey 
+ status=401, reason=Unauthorized 
+ headers={'Server': 'openresty', 'Date': 'Fri, 20 May 2022 01:15:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '107', 'Connection': 'keep-alive', 'X-Cache-Key': '/data/2.5/weather/?', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'GET, POST'} 
+ body={"cod":401, "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."} 
+ </msg>
+<msg timestamp="20220519 22:15:44.894" level="INFO">${RESPOSTA} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220519 22:15:43.967" endtime="20220519 22:15:44.894"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Resposta: ${RESPOSTA.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220519 22:15:44.895" level="INFO">Resposta: {"cod":401, "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."}</msg>
+<status status="PASS" starttime="20220519 22:15:44.894" endtime="20220519 22:15:44.895"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220519 22:15:44.895" level="INFO">${RESPOSTA} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220519 22:15:44.895" endtime="20220519 22:15:44.895"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.966" endtime="20220519 22:15:44.896"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.966" endtime="20220519 22:15:44.896"/>
+</kw>
+<kw name="Então a mensagem &quot;Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.&quot; deve ser retornada" library="weather_data" sourcename="Então a mensagem &quot;${MENSAGEM}&quot; deve ser retornada">
+<kw name="Confere a mensagem" library="api_resource">
+<arg>${MENSAGEM}</arg>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPOSTA.json()}</arg>
+<arg>message</arg>
+<arg>${MENSAGEM}</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20220519 22:15:44.897" endtime="20220519 22:15:44.897"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:44.896" endtime="20220519 22:15:44.897"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:44.896" endtime="20220519 22:15:44.898"/>
+</kw>
+<kw name="E o status code deve ser &quot;401&quot;" library="weather_data" sourcename="E o status code deve ser &quot;${STATUS_CODE}&quot;">
+<kw name="Confere o status code" library="api_resource">
+<arg>${STATUS_CODE}</arg>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${RESPOSTA.status_code}</arg>
+<arg>${STATUS_ESPERADO}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220519 22:15:44.899" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20220519 22:15:44.899" endtime="20220519 22:15:44.899"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Status Code Retornado: ${RESPOSTA.status_code} -- Status Code Esperado: ${STATUS_ESPERADO}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220519 22:15:44.900" level="INFO">Status Code Retornado: 401 -- Status Code Esperado: 401</msg>
+<status status="PASS" starttime="20220519 22:15:44.899" endtime="20220519 22:15:44.900"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:44.898" endtime="20220519 22:15:44.900"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:44.898" endtime="20220519 22:15:44.900"/>
+</kw>
+<status status="PASS" starttime="20220519 22:15:43.964" endtime="20220519 22:15:44.900"/>
+</test>
+<status status="PASS" starttime="20220519 22:15:41.956" endtime="20220519 22:15:44.902"/>
+</suite>
+<status status="PASS" starttime="20220519 22:15:41.933" endtime="20220519 22:15:44.904"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Api">Api</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1" name="Weather Data">Api.Weather Data</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220519 22:15:42.069" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220519 22:15:43.011" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220519 22:15:43.967" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

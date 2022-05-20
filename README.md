@@ -33,3 +33,13 @@ Executar os testes web através da raiz do projeto e gerar os logs:
 robot -d ./logs tests/web\
 
 # Teste de Automação API
+
+Nesta etapa, escolhi criar uma suite de testes de API usando Robot Framework + RequestLibrary.
+
+Se você já tiver configurado os testes de UI, nessa etapa só vai precisar configurar o RequestLibrary:
+
+Instalar o RequestLibrary com o pip:
+pip install robotframework-requests
+
+Executar os testes de api através da raiz do projeto e gerar os logs:
+robot -d ./logs tests/api\

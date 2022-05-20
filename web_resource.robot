@@ -1,6 +1,6 @@
 *** Settings ***
 Library     SeleniumLibrary
-Resource    pages/register.robot
+Resource    actions/registration.robot
 
 *** Variables ***
 ${BROWSER}                      edge
