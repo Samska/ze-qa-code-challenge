@@ -1,6 +1,6 @@
 *** Settings ***
 Resource                ../../resources/api_resource.robot
-Resource                ../../actions/weather_data.robot
+Resource                ../../steps/weather_data.robot
 
 *** Test Case ***
 Cenário 01: Consulta de clima por cidade
