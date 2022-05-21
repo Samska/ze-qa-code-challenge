@@ -23,7 +23,7 @@ Executar a keyword ate ter sucesso
 Dado que esteja na página de cadastro
         Click Button                            ${BUTTON_ENTRAR} 
         Wait Until Page Contains                Quero criar uma conta
-        Click Link                              ${CRIAR_CONTA_LINK}  
+        Executar a keyword ate ter sucesso      Click Link           ${CRIAR_CONTA_LINK}  
         Wait Until Page Contains                Criar conta com e‑mail e senha
 
 Quando preencher o formulário com dados validos
@@ -48,13 +48,14 @@ Quando preencher o formulário com dados validos
 E aceitar os termos e condições
         Wait Until Element Is Enabled           ${TERMOS}
         Checkbox Should Not Be Selected         ${TERMOS}
-        Select Checkbox                         ${TERMOS}       
+        Executar a keyword ate ter sucesso      Select Checkbox           ${TERMOS}       
 
 E clicar em criar conta
         Wait Until Element Is Enabled           ${BUTTON_CRIAR_CONTA}
         Executar a keyword ate ter sucesso      Click Element           ${BUTTON_CRIAR_CONTA}                        
 
 E preencher o campo "${CAMPO}" com "${VALOR}"
+        Sleep           2s
         Press Keys      css=[aria-label*=${CAMPO}]      CTRL+a+BACKSPACE
         Input Text      css=[aria-label*=${CAMPO}]      ${VALOR}                               
 
