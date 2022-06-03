@@ -4,7 +4,7 @@ Library     Collections
 
 *** Variable ***
 ${HOST}         https://api.openweathermap.org/data/2.5/weather
-${APP_KEY}      0309b15c3c7fd25bc276675da66e9c05
+${APP_KEY}      appkey
 ${LANG}         pt_br
 
 *** Keywords ***
